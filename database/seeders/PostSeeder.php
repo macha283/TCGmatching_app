@@ -17,6 +17,7 @@ class PostSeeder extends Seeder
         DB::table('posts')->truncate(); //データを一旦削除
         
         DB::table('posts')->insert([
+                'title' => 'title1',
                 'date' => '2024/09/16',
                 'place' => '〇〇県××市',
                 'playtitle' => 'ポケモンカード',
@@ -25,6 +26,7 @@ class PostSeeder extends Seeder
                 'updated_at' => new DateTime(),
          ]);
          DB::table('posts')->insert([
+                'title' => 'title2',
                 'date' => '2024/09/17',
                 'place' => '□〇県△×市',
                 'playtitle' => '遊戯王OCG',
