@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('date');
-            $table->string('place',50);
+            $table->dateTime('date');
+            //$table->string('place',50);
+            $table->decimal('latitude', 10, 7);
+            $table->decimal('longitude', 10, 7);
             $table->string('playtitle',20);
             $table->string('comment',100);
             $table->timestamps();

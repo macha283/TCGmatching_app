@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->truncate(); //データを一旦削除
         
-        DB::table('posts')->insert([
+        DB::table('users')->insert([
                 'name' => 'AIUEO',
                 'email' => '〇〇@gmail.com',
                 'password' => 'qwerty1234',
