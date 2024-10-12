@@ -29,11 +29,11 @@
             <div>
                 <h2>遊びたいタイトル</h2>
                 <select name="post[playtitle]"  value="{{ old('post.playtitle') }}">
-                    <option value="OCG">遊戯王OCG</option>
-                    <option value="DM">デュエルマスターズ</option>
-                    <option value="MTG">MAGIC:the GATHERING</option>
-                    <option value="Pokemon">ポケモンカードゲーム</option>
-                    <option value="other">その他</option>
+                    <option value="遊戯王OCG">遊戯王OCG</option>
+                    <option value="デュエルマスターズ">デュエルマスターズ</option>
+                    <option value="MAGIC:the GATHERING">MAGIC:the GATHERING</option>
+                    <option value="ポケモンカードゲーム">ポケモンカードゲーム</option>
+                    <option value="その他">その他</option>
                 </select>
                 <p class="playtitle__error" style="color:red">{{ $errors->first('post.playtitle') }}</p>
             </div>
@@ -51,17 +51,17 @@
             <input type="submit" value="投稿する"/>
         </form>
         <div class="footer">
-            <a href="/">戻る</a>
+            <a href="/home">戻る</a>
         </div>
     </body>
     <script>
         const lat_input = document.getElementById("latitude");
         const lng_input = document.getElementById("longitude");
         function initMap() {
-            const initialLocation = { lat: -34.397, lng: 150.644 };
+            const initialLocation = { lat: 35.6809591, lng: 139.7673068 };
             map = new google.maps.Map(document.getElementById("map"), {
                 center: initialLocation,
-                zoom: 8,
+                zoom: 13,
             });
     
             map.addListener('click', (event) => {

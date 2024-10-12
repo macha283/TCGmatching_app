@@ -10,6 +10,10 @@
         <h1>
             Name
         </h1>
+        <form action="{{ route('search.index') }}" method="GET">
+            <input type="text" name="keyword">
+            <input type="submit" value="検索">
+        </form>
         <div class='posts'>
             @foreach ($posts as $post)
                 <div class='post'>
@@ -18,8 +22,11 @@
                             {{ $post->title }}
                         </a>
                     </h2>
-                    <p class='comment'>
-                        {{ $post->comment }}
+                    <p class='playtitle'>
+                       遊びたいタイトル： {{ $post->playtitle }}
+                    </p>
+                    <p class='date'>
+                        希望日時：{{ $post->date }}
                     </p>
                 </div>
             @endforeach

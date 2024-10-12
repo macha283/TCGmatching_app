@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
         
         DB::table('users')->insert([
                 'name' => 'AIUEO',
-                'email' => '〇〇@gmail.com',
+                'email' => 'aiueo@gmail.com',
                 'password' => Hash::make('qwerty1234'),
                 'playtitle' => 'MTG',
                 'image_url' => 'https://~',
