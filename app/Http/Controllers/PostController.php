@@ -15,7 +15,6 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts.show')->with(['post' => $post]);
-     //'post'はbladeファイルで使う変数。中身は$postはid=1のPostインスタンス。
     }
     public function create()
     {
@@ -31,5 +30,24 @@ class PostController extends Controller
         $api_key = config('app.api_key');
         return view('create.balde.php')->with(['api_key' => $api_key]);
     }
+    
+    
+    public function postsearch(Post $post, Request $request){
+        $post = Post::query();
+        $keyword = $request->input('keyword');
+       
+        if(!empty($keyword)) {
+            $post
+            ->where('title', 'LIKE', "%{$keyword}%")
+            ->orwhere('playtitle', 'LIKE', "%{$keyword}%") 
+            ->orwhere('comment', 'LIKE', "%{$keyword}%");
+            // ->paginate(2);
+            // ->get();
+        
+        }
+        
+        return view('posts.index')->with(['posts' => $post->paginate(2)]);
+    }
+
 }
 

@@ -24,15 +24,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/home', [PostController::class, 'index']);
 
 Route::get('/posts/create', [PostController::class, 'create']);
 
 Route::post('/posts', [PostController::class, 'store']);
 
+Route::get('/posts/search', [PostController::class ,'postsearch'])->name('search.index'); 
+
 Route::get('/posts/{post}', [PostController::class ,'show']);
 
 Route::get('/users/{user}', [UserprofileController::class, 'show']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

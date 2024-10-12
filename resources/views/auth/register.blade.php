@@ -40,13 +40,13 @@
         </div>
         <!-- playtitle -->
         <div>
-        <h2>遊びたいタイトル</h2>
+        <h2>よく遊ぶタイトル</h2>
             <select name="playtitle"  value="{{ old('playtitle') }}">
-                <option value="OCG">遊戯王OCG</option>
-                <option value="DM">デュエルマスターズ</option>
-                <option value="MTG">MAGIC:the GATHERING</option>
-                <option value="Pokemon">ポケモンカードゲーム</option>
-                <option value="other">その他</option>
+                <option value="遊戯王OCG">遊戯王OCG</option>
+                <option value="デュエルマスターズ">デュエルマスターズ</option>
+                <option value="MAGIC:the GATHERING">MAGIC:the GATHERING</option>
+                <option value="ポケモンカードゲーム">ポケモンカードゲーム</option>
+                <option value="その他">その他</option>
             </select>
         </div>
         <!-- commenr -->
