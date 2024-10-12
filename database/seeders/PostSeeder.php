@@ -24,7 +24,7 @@ class PostSeeder extends Seeder
                 'longitude' => 139.7454506,
                 'playtitle' => 'ポケモンカード',
                 'comment' => 'aaaaaa',
-                'user_id' -> {1},
+                'user_id' => 1,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
@@ -36,7 +36,7 @@ class PostSeeder extends Seeder
                 'longitude' => 139.7454506,
                 'playtitle' => '遊戯王OCG',
                 'comment' => 'bbbbbbb',
-                'user_id' -> 1,
+                'user_id' => 1,
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);

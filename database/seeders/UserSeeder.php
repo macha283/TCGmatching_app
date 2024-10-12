@@ -14,12 +14,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->truncate(); //データを一旦削除
         
         DB::table('users')->insert([
                 'name' => 'AIUEO',
                 'email' => '〇〇@gmail.com',
-                'password' => 'qwerty1234',
+                'password' => Hash::make('qwerty1234'),
                 'playtitle' => 'MTG',
                 'image_url' => 'https://~',
                 'comment' => 'aaaaaaa',

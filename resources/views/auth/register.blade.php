@@ -38,7 +38,23 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
-
+        <!-- playtitle -->
+        <div>
+        <h2>遊びたいタイトル</h2>
+            <select name="playtitle"  value="{{ old('playtitle') }}">
+                <option value="OCG">遊戯王OCG</option>
+                <option value="DM">デュエルマスターズ</option>
+                <option value="MTG">MAGIC:the GATHERING</option>
+                <option value="Pokemon">ポケモンカードゲーム</option>
+                <option value="other">その他</option>
+            </select>
+        </div>
+        <!-- commenr -->
+        <div>
+        <h2>comment</h2>
+                <textarea name="comment" placeholder="フリーコメント欄です。"></textarea>
+        </div>
+    
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}

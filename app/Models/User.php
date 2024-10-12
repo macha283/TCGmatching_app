@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'playtitle',
+        'image_url',
+        'comment',
+        
     ];
 
     /**
@@ -46,4 +50,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);  
     }
+    protected $attributes = [
+        'image_url' => '[]',
+    ];
 }
