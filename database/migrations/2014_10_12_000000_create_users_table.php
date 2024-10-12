@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name',15);
             $table->string('email',50);
-            $table->string('password',50);
+            $table->string('password');
             $table->string('playtitle',50);
             $table->string('image_url');
             $table->string('comment',100);

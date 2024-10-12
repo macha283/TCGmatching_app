@@ -22,56 +22,9 @@
             </div>
             <div>
                 <h2>場所</h2>
-                <textarea name="post[place]" placeholder="仮置き 地図apiを使いたい"></textarea>
+                
                 <div id="map" style="height:500px"></div>
-                <script>
-                    function initMap() {
-                        const initialLocation = { lat: -34.397, lng: 150.644 };
-                        map = new google.maps.Map(document.getElementById("map"), {
-                            center: initialLocation,
-                            zoom: 8,
-                        });
                 
-                        map.addListener('click', (event) => {
-                            placeMarker(event.latLng);
-                            saveLocation(event.latLng);
-                        });
-                    }
-                    function placeMarker(location) {
-                        if (marker) {
-                            marker.setPosition(location);
-                        } else {
-                            marker = new google.maps.Marker({
-                                position: location,
-                                map: map,
-                            });
-                        }
-                    }
-                
-                    function saveLocation(location) {
-                        fetch('/locations', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            },
-                            body: JSON.stringify({
-                                latitude: location.lat(),
-                                longitude: location.lng()
-                            })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                alert('Location saved successfully!');
-                            } else {
-                                alert('Failed to save location.');
-                            }
-                        })
-                        .catch(error => console.error('Error:', error));
-                    }
-                </script>
-                <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyCv5Yc0QYve2uafmqa-cXehQS2TlbjyMHU&callback=initMap" async defer></script>
             </div>
             <div>
                 <h2>遊びたいタイトル</h2>
@@ -88,10 +41,72 @@
                 <h2>comment</h2>
                 <textarea name="post[comment]" placeholder="フリーコメント欄です。"></textarea>
             </div>
+            <div>
+                <input id="latitude" name="post[latitude]" value="{{ old('post.latitude') }}" type="hidden"/>
+                <input id="longitude" name="post[longitude]" value="{{ old('post.longitude') }}" type="hidden"/>
+            </div>
+            <div>
+                <input name="post[user_id]" value="{{ Auth::user()->id }}" type="hidden"/>
+            </div>
             <input type="submit" value="投稿する"/>
         </form>
         <div class="footer">
             <a href="/">戻る</a>
         </div>
     </body>
+    <script>
+        const lat_input = document.getElementById("latitude");
+        const lng_input = document.getElementById("longitude");
+        function initMap() {
+            const initialLocation = { lat: -34.397, lng: 150.644 };
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: initialLocation,
+                zoom: 8,
+            });
+    
+            map.addListener('click', (event) => {
+                console.log('click');
+                placeMarker(event.latLng);
+                saveLocation(event.latLng);
+            });
+        }
+        let marker;
+        function placeMarker(location) {
+            if (marker) {
+                marker.setPosition(location);
+            } else {
+                console.log(location);
+                marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+            }
+        }
+    
+        function saveLocation(location) {
+            lat_input.value = location.lat();
+            lng_input.value = location.lng();
+            // fetch('/locations', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            //     },
+            //     body: JSON.stringify({
+            //         latitude: location.lat(),
+            //         longitude: location.lng()
+            //     })
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success) {
+            //         alert('Location saved successfully!');
+            //     } else {
+            //         alert('Failed to save location.');
+            //     }
+            // })
+            // .catch(error => console.error('Error:', error));
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyCv5Yc0QYve2uafmqa-cXehQS2TlbjyMHU&callback=initMap" async defer></script>
 </html>
